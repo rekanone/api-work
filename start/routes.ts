@@ -41,6 +41,7 @@ Route.group(() => {
     Route.delete('delete', 'BooksController.delete' )
     Route.get('find/:id', 'BooksController.find')
     Route.patch('update', 'BooksController.update')
+    Route.put('update-mass', 'BooksController.updateMass')
   }).prefix('books')
 
   

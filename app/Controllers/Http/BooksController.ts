@@ -57,6 +57,18 @@ export default class BooksController {
         return response.json({ "status": "success", ...payload })
     }
 
-    
+    public async updateMass({ request, response }) {
+        // get body
+        const payload = await request.body();
+        // loop
+        for (const p of payload) {
+            const book = await Book.findOrFail(p.id);
+            book.user_id = p.user_id;
+            book.book_name = p.book_name;
+            await book.save();
+        }
+        // return
+        return response.json({ "status": "success", "records": [ ...payload ] })
+    }
 
 }
