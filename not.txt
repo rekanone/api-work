@@ -1,0 +1,14 @@
+veri tabanı işlemeleri için:
+
+	migration:
+		- Create: node ace make:migration [Tablename]
+		- Run: node ace migration:run
+		- Rollback: node ace migration:rollback
+		- Status: node ace migration:status
+		- Fresh: node ace migration:fresh (Tüm tabloları siler migration:run komutunu tekrar çalıştırır)
+	
+	seeder: geliştirme ortamı için.
+		- Create: node ace make:seeder [Filename]
+		- Run: node ace db:seed
+
+	
