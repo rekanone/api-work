@@ -21,7 +21,8 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 // Login
-Route.post("login", "LoginController.attempt")
+Route.post("login", "UsersController.login")
+Route.post("register", "UsersController.register")
 
 // Todos Group
 Route.group(() => {
