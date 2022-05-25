@@ -20,30 +20,12 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async () => {
-  return { hello: 'world' }
-})
+// Login
+Route.post("login", "LoginController.attempt")
 
+// Todos Group
 Route.group(() => {
 
-  Route.group(() => {
-    Route.post('all', 'UsersController.all')
-    Route.post('find', 'UsersController.find')
-  }).prefix('users')
-  
-  Route.group(() => {
-    Route.post('find', 'CommentsController.find') //domain.com/v1/comments/find
-  }).prefix('comments')
+  Route.post("all", "TodosController.all")
 
-
-  Route.group(() => {
-    Route.post('add', 'BooksController.add')
-    Route.delete('delete', 'BooksController.delete' )
-    Route.get('find/:id', 'BooksController.find')
-    Route.patch('update', 'BooksController.update')
-    Route.put('update-mass', 'BooksController.updateMass')
-  }).prefix('books')
-
-  
-
-}).prefix('v1')
+}).prefix("todos").middleware('auth')

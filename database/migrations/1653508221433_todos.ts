@@ -1,13 +1,15 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
-export default class Comments extends BaseSchema {
-  protected tableName = 'comments'
+export default class Todos extends BaseSchema {
+  protected tableName = 'todos'
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.integer('user_id');
-      table.string('comment');
+      table.integer("user_id").unsigned().references("id").inTable("users")
+      table.string("name")
+      table.boolean("is_done").defaultTo(0)
+      table.boolean("is_removed").defaultTo(0)
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
